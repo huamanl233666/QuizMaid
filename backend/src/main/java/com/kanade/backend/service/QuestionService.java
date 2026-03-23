@@ -6,12 +6,15 @@ import com.kanade.backend.model.vo.QuestionVO;
 import com.mybatisflex.core.paginate.Page;
 import com.mybatisflex.core.service.IService;
 
+import java.util.List;
+
 public interface QuestionService extends IService<Question> {
     /**
      * 添加试题（自动生成MD5）
      */
     Long addQuestion(Question question);
 
+    Long addQuestion(Question question, Long creatorId);
     /**
      * 更新试题（重新生成MD5并查重）
      */
@@ -32,4 +35,5 @@ public interface QuestionService extends IService<Question> {
      */
     boolean updateStatus(Long id, Integer status);
 
+    List<Long> batchAddQuestion(List<Question> questionList);
 }
